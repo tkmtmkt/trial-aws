@@ -4,7 +4,7 @@ variable "provider_region" {
   default     = "ap-northeast-1"
 }
 
-variable "secret_access_key" {
+variable "access_key" {
   description = "Provider access key"
   default     = "YOUR-ACCESS-KEY"
 }
