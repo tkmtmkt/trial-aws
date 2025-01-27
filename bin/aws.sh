@@ -11,6 +11,5 @@ set -o verbose
 cd ${BASE_DIR}
 docker run --rm -it \
   --env-file=${BASE_DIR}/.env \
-  -v ~/.aws:/root/.aws \
-  -v "${BASE_DIR}:/aws"  \
+  -v ${BASE_DIR}/aws:/root \
   amazon/aws-cli $@

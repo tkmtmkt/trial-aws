@@ -11,7 +11,6 @@ set -o verbose
 cd ${BASE_DIR}
 docker run --rm -it \
   --env-file=${BASE_DIR}/.env \
+  -v ${BASE_DIR}/aws:/root \
   -w /root \
-  -v "${BASE_DIR}:/root" \
-  -v ~/.aws:/root/.aws \
   hashicorp/terraform $@
