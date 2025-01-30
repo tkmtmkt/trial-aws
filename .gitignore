@@ -41,5 +41,3 @@ terraform.rc
 .ssh/
 .aws/
 .*history
-.terraform.d/
-.terraform.lock.hcl
