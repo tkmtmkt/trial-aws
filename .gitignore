@@ -38,6 +38,7 @@ terraform.rc
 
 # other
 .env
+.ssh/
 .aws/
 .*history
 .terraform.d/

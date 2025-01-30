@@ -1,26 +1,37 @@
-# provider variables
-variable "provider_region" {
-  description = "Provider region"
-  default     = "ap-northeast-1"
+variable "project" {
+  type    = string
+  default = "example"
 }
 
-variable "access_key" {
-  description = "Provider access key"
-  default     = "YOUR-ACCESS-KEY"
+variable "region" {
+  type    = string
+  default = "ap-northeast-1"
 }
 
-variable "secret_key" {
-  description = "Provider secret key"
-  default     = "YOUR-SECRET-KEY"
+variable "main_public" {
+  default = {
+    cidr_block      = "10.0.1.0/24"
+    private_ip_web1 = "10.0.1.101"
+  }
 }
 
-# instance web variables
-variable "server_instance_type" {
-  description = "Server instance type"
-  default     = "t2.micro"
+variable "main_private" {
+  default = {
+    cidr_block      = "10.0.3.0/24"
+    private_ip_app1 = "10.0.3.101"
+  }
 }
 
-variable "server_tag_name" {
-  description = "Server tag name"
-  default     = "JeSuisUnDev"
+variable "backup_public" {
+  default = {
+    cidr_block      = "10.0.2.0/24"
+    private_ip_web2 = "10.0.2.101"
+  }
+}
+
+variable "backup_private" {
+  default = {
+    cidr_block      = "10.0.4.0/24"
+    private_ip_app2 = "10.0.4.101"
+  }
 }
