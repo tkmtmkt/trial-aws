@@ -53,22 +53,22 @@ variable "hosts" {
   type = map(any)
   default = {
     web1 = {
-      instance_type = "t3.micro"
+      instance_type = "t2.micro"
       subnet        = "main_public"
       private_ip    = "10.0.1.10"
     }
     app1 = {
-      instance_type = "t3.micro"
+      instance_type = "t2.micro"
       subnet        = "main_private"
       private_ip    = "10.0.3.10"
     }
     web2 = {
-      instance_type = "t3.micro"
+      instance_type = "t2.micro"
       subnet        = "backup_public"
       private_ip    = "10.0.2.10"
     }
     app2 = {
-      instance_type = "t3.micro"
+      instance_type = "t2.micro"
       subnet        = "backup_private"
       private_ip    = "10.0.4.10"
     }
