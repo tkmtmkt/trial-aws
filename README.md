@@ -1,16 +1,22 @@
-trial-aws
-=========
+trial-terraform-aws
+===================
 
 ```sh
-alias aws='podman run --rm -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
-alias terraform='podman run --rm -w /root -v $(pwd):/root/ hashicorp/terraform'
-```
+# 初期化
+bin/terraform.sh init
 
-```
-terraform init
-terraform validate
-terraform fmt
-terraform plan
-terraform apply
-terraform destroy
+# 検証
+bin/terraform.sh validate
+
+# フォーマット整形
+bin/terraform.sh fmt
+
+# 設定内容確認
+bin/terraform.sh plan
+
+# 設定適用
+bin/terraform.sh apply
+
+# 設定削除
+bin/terraform.sh destroy
 ```
