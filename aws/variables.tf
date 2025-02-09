@@ -64,25 +64,21 @@ variable "hosts" {
       instance_type = "t2.micro"
       subnet        = "main_public"
       private_ip    = "10.1.1.10"
-      public        = true
     }
     app1 = {
       instance_type = "t2.micro"
       subnet        = "main_private"
       private_ip    = "10.1.3.10"
-      public        = false
     }
     web2 = {
       instance_type = "t2.micro"
       subnet        = "backup_public"
       private_ip    = "10.1.2.10"
-      public        = true
     }
     app2 = {
       instance_type = "t2.micro"
       subnet        = "backup_private"
       private_ip    = "10.1.4.10"
-      public        = false
     }
   }
 }

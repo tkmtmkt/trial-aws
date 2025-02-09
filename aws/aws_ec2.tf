@@ -2,7 +2,7 @@
 # EC2インスタンスの作成
 #----------------------------------------
 resource "aws_instance" "public" {
-  for_each = { for k, v in var.hosts : k => v if v.public == true }
+  for_each = { for k, v in var.hosts : k => v if var.subnets[v.subnet].public == true }
 
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = each.value.instance_type
@@ -24,7 +24,7 @@ EOF
 }
 
 resource "aws_instance" "private" {
-  for_each = { for k, v in var.hosts : k => v if v.public == false }
+  for_each = { for k, v in var.hosts : k => v if var.subnets[v.subnet].public == false }
 
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = each.value.instance_type
