@@ -6,11 +6,19 @@ locals {
 # VPC
 variable "vpc_cidr" {
   type    = string
-  default = "10.0.0.0/16"
+  default = "10.1.0.0/16"
 }
 
 # Endpoint
 variable "endpoint" {
+  type = map(any)
+  default = {
+    subnet = "main_public"
+  }
+}
+
+# NAT
+variable "nat" {
   type = map(any)
   default = {
     subnet = "main_public"
@@ -23,25 +31,25 @@ variable "subnets" {
   default = {
     main_public = {
       name   = "main-public",
-      cidr   = "10.0.1.0/24",
+      cidr   = "10.1.1.0/24",
       az     = "ap-northeast-1a"
       public = true
     },
     main_private = {
       name   = "main-private",
-      cidr   = "10.0.3.0/24",
+      cidr   = "10.1.3.0/24",
       az     = "ap-northeast-1a"
       public = false
     },
     backup_public = {
       name   = "backup-public",
-      cidr   = "10.0.2.0/24",
+      cidr   = "10.1.2.0/24",
       az     = "ap-northeast-1c"
       public = true
     },
     backup_private = {
       name   = "backup-private",
-      cidr   = "10.0.4.0/24",
+      cidr   = "10.1.4.0/24",
       az     = "ap-northeast-1c"
       public = false
     }
@@ -55,22 +63,26 @@ variable "hosts" {
     web1 = {
       instance_type = "t2.micro"
       subnet        = "main_public"
-      private_ip    = "10.0.1.10"
+      private_ip    = "10.1.1.10"
+      public        = true
     }
     app1 = {
       instance_type = "t2.micro"
       subnet        = "main_private"
-      private_ip    = "10.0.3.10"
+      private_ip    = "10.1.3.10"
+      public        = false
     }
     web2 = {
       instance_type = "t2.micro"
       subnet        = "backup_public"
-      private_ip    = "10.0.2.10"
+      private_ip    = "10.1.2.10"
+      public        = true
     }
     app2 = {
       instance_type = "t2.micro"
       subnet        = "backup_private"
-      private_ip    = "10.0.4.10"
+      private_ip    = "10.1.4.10"
+      public        = false
     }
   }
 }
